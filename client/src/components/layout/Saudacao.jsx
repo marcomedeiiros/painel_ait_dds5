@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import styles from './Saudacao.module.css';
+
 function Saudacao(){
     const [saudacaoPeriodo, setSaudacaoPeriodo] = useState('');
     useEffect(()=>{
@@ -42,7 +44,7 @@ function Saudacao(){
     }
     
     return(
-        <div>{saudacaoPeriodo}</div>
+        <div className={styles.saudacao}>{saudacaoPeriodo}</div>
     )
 }
 

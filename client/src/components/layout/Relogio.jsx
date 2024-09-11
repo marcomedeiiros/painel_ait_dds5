@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from './Relogio.module.css';
 
 //declarando função relogio
 function Relogio(){
@@ -26,7 +27,7 @@ function Relogio(){
     }    
     return(
         // retornando uma div com a hora minutos e segundos de forma correta
-        <div>{hora}</div>
+        <div className={styles.relogio}>{hora}</div>
     )
 }
 
