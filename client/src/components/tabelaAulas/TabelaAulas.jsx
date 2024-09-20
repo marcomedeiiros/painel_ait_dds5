@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import AbreviaData from "./AbreviaData";
 import AbreviaUC from "./AbreviaUC";
 import AbreviaInstrutor from "./AbreviaInstrutor";
+import AbreviaAmbiente from "./AbreviaAmbiente";
+import styles from './TabelaAulas.module.css';
 
 function TabelaAulas() {
     const [aulas, setAulas] = useState([]);
 
     useEffect(() => {
         baixarAulas();
-    }, [])
+    }, []);
 
     async function baixarAulas() {
         try {
@@ -18,20 +20,22 @@ function TabelaAulas() {
                     'Content-Type': 'application/json'
                 }
             });
-            if (!resposta) {
+            if (!resposta.ok) {
                 throw new Error('Erro ao buscar aulas');
             }
             const consulta = await resposta.json();
             setAulas(consulta);
         } catch (error) {
-            console.log('Error ao consultar aulas', error)
+            console.log('Error ao consultar aulas', error);
         }
     }
+
     return (
-        <div>
+        <div className={styles.aulas}>
+        <table className={styles.tabelaAulas}>
             <thead>
                 <tr>
-                    <th>Inicio</th>
+                    <th>Início</th>
                     <th>Fim</th>
                     <th>Turma</th>
                     <th>Instrutor</th>
@@ -46,13 +50,14 @@ function TabelaAulas() {
                         <td><AbreviaData data={aula.data_hora_fim} /></td>
                         <td>{aula.turma}</td>
                         <td><AbreviaInstrutor nome={aula.instrutor} /></td>
-                        <td><AbreviaUC nome={aula.unidade_curricular}  /></td>
-                        <td>{aula.ambiente}</td>
+                        <td><AbreviaUC nome={aula.unidade_curricular} /></td>
+                        <td><AbreviaAmbiente ambiente={aula.ambiente} /></td>
                     </tr>
                 ))}
             </tbody>
+        </table>
         </div>
-    )
+    );
 }
 
-export default TabelaAulas
+export default TabelaAulas;

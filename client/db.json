@@ -33,5 +33,10 @@
             "ambiente": "VTRIA-3-LAB-3003",
             "chave": null
         }
+    ],
+    "imagens":[
+        {"id":1,"caminho":"https://imageplaceholder.net/600x750", "alt":"Setembro"},
+        {"id":2,"caminho":"https://imageplaceholder.net/600x750", "alt":"Aulas"}
     ]
+
 }

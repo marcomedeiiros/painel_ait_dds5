@@ -2,15 +2,14 @@ function AbreviaUC(props) {
     const { nome } = props;
     const nomes = nome.split(' ');
 
-    if (nomes.length < 2) {
-     
+    if (nomes.length < 3) {
         return <span>{nome}</span>;
     }
 
     const primeiroNome = nomes[0];
-    const segundoNome = nomes[1];
+    const antepenultimoNome = nomes[nomes.length - 3];
 
-    return <span>{primeiroNome} {segundoNome}</span>;
+    return <span>{primeiroNome} {antepenultimoNome}</span>;
 }
 
 export default AbreviaUC;
