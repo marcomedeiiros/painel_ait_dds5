@@ -5,7 +5,7 @@ import AbreviaInstrutor from "./AbreviaInstrutor";
 import AbreviaAmbiente from "./AbreviaAmbiente";
 import styles from './TabelaAulas.module.css';
 
-function TabelaAulas() {
+function TabelaAulas({tipo}) {
     const [aulas, setAulas] = useState([]);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function TabelaAulas() {
     }
 
     return (
-        <div className={styles.aulas}>
+        <div className={`${styles.aulas} ${tipo ==='edit' ? styles.edit: ''}`}>
         <table className={styles.tabelaAulas}>
             <thead>
                 <tr>
@@ -41,6 +41,7 @@ function TabelaAulas() {
                     <th>Instrutor</th>
                     <th>Unidade Curricular</th>
                     <th>Ambiente</th>
+                    {tipo === 'edit' && <th>Ações</th>}
                 </tr>
             </thead>
             <tbody>
@@ -52,6 +53,12 @@ function TabelaAulas() {
                         <td><AbreviaInstrutor nome={aula.instrutor} /></td>
                         <td><AbreviaUC nome={aula.unidade_curricular} /></td>
                         <td><AbreviaAmbiente ambiente={aula.ambiente} /></td>
+                        {tipo === 'edit' && 
+                        <td>
+                            <button className="btn btn-warning">Editar</button>
+                            <button className="btn btn-danger ms-2">Deletar</button>
+                        </td>
+                         }
                     </tr>
                 ))}
             </tbody>
