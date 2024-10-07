@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '../layout/Navbar';
 
 
-function FormAula({ titulo, textoBotao, handleSubmit }) {
+function FormAula({ titulo, textoBotao, handleSubmit, id }) {
     const [dataAula, setDataAula] = useState('');
     const [horaInicio, setHoraInicio] = useState('');
     const [horaFim, setHoraFim] = useState('');
@@ -11,11 +11,35 @@ function FormAula({ titulo, textoBotao, handleSubmit }) {
     const [unidadeCurricular, setUnidadeCurricular] = useState('');
     const [ambiente, setAmbiente] = useState('');
 
-    // const [aula, setAula] =useState({});
+
+    useEffect(() => {
+        if (id) {
+            baixarAula(id);
+        }
+    }, []);
+
+    async function baixarAula(id) {
+        try {
+            const resposta = await fetch(`http://localhost:5000/aulas/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            if (!resposta.ok) {
+                throw new Error('Erro ao buscar aula');
+            } else {
+                console.log(JSON.stringify(resposta));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     function submit(e) {
         e.preventDefault();
-        
+
         const aula = {
             data: dataAula,
             data_hora_inicio: horaInicio,
