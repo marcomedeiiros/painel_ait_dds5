@@ -10,61 +10,6 @@
       "unidade_curricular": "NOÇÕES BÁSICAS PARA MAQUINISTAS (CH: 219.0000)",
       "ambiente": "VTRIA-3-SALA-3004",
       "chave": null
-    },
-    {
-      "id": "1280",
-      "data": "2024-08-29T03:00:00.000Z",
-      "data_hora_inicio": "2024-08-29T21:00:00.000Z",
-      "data_hora_fim": "2024-08-30T01:00:00.000Z",
-      "turma": "UMO-MBMM-03",
-      "instrutor": "THADEU VASCONCELOS DA SILVA GOMES",
-      "unidade_curricular": "MECÂNICA BÁSICA DE MOTORES DE MOTOCICLETAS (CH: 100.0000)",
-      "ambiente": "VTRIA-EXTER-EXTERNO",
-      "chave": null
-    },
-    {
-      "id": "1326",
-      "data": "2024-08-29T03:00:00.000Z",
-      "data_hora_inicio": "2024-08-29T21:30:00.000Z",
-      "data_hora_fim": "2024-08-30T01:00:00.000Z",
-      "turma": "HTC-MEC-4-92",
-      "instrutor": "AFONSO DE JESUS CORDEIRO",
-      "unidade_curricular": "DESENVOLVIMENTO DE SISTEMAS DE AUTOMAÇÃO MECÂNICA (CH: 100.0000)",
-      "ambiente": "VTRIA-3-LAB-3003",
-      "chave": null
-    },
-    {
-      "id": "6f6a",
-      "data": "",
-      "data_hora_inicio": "",
-      "data_hora_fim": "",
-      "turma": "mar",
-      "instrutor": "aymar",
-      "unidade_curricular": "futebol",
-      "ambiente": "",
-      "chave": null
-    },
-    {
-      "id": "ff8f",
-      "data": "2024-10-04",
-      "data_hora_inicio": "00:00",
-      "data_hora_fim": "05:30",
-      "turma": "dds-5",
-      "instrutor": "aymar",
-      "unidade_curricular": "futebol goleiro",
-      "ambiente": "mar",
-      "chave": null
-    },
-    {
-      "id": "caca",
-      "data": "2024-10-04",
-      "data_hora_inicio": "12:00",
-      "data_hora_fim": "00:23",
-      "turma": "aaa",
-      "instrutor": "AYMAR SILVA",
-      "unidade_curricular": "aaa",
-      "ambiente": "aaa",
-      "chave": null
     }
   ],
   "imagens": [

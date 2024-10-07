@@ -4,8 +4,9 @@ import AbreviaUC from "./AbreviaUC";
 import AbreviaInstrutor from "./AbreviaInstrutor";
 import AbreviaAmbiente from "./AbreviaAmbiente";
 import styles from './TabelaAulas.module.css';
+import { Link } from "react-router-dom";
 
-function TabelaAulas({tipo}) {
+function TabelaAulas({ tipo }) {
     const [aulas, setAulas] = useState([]);
 
     useEffect(() => {
@@ -30,39 +31,62 @@ function TabelaAulas({tipo}) {
         }
     }
 
+    async function deletarAulas(id) {
+        try {
+            const resposta = await fetch(`http://localhost:5000/aulas/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!resposta.ok) {
+                throw new Error('Erro ao deletar Aula', JSON.stringify(resposta));
+            } else {
+                setAulas(aulas.filter(aula => aula.id !== id));
+                alert('Aula Deletada');
+            }
+        } catch (error) {
+            console.debug(error);
+        }
+    }
+
     return (
-        <div className={`${styles.aulas} ${tipo ==='edit' ? styles.edit: ''}`}>
-        <table className={styles.tabelaAulas}>
-            <thead>
-                <tr>
-                    <th>Início</th>
-                    <th>Fim</th>
-                    <th>Turma</th>
-                    <th>Instrutor</th>
-                    <th>Unidade Curricular</th>
-                    <th>Ambiente</th>
-                    {tipo === 'edit' && <th>Ações</th>}
-                </tr>
-            </thead>
-            <tbody>
-                {aulas.map((aula) => (
-                    <tr key={aula.id}>
-                        <td><AbreviaData data={aula.data_hora_inicio} /></td>
-                        <td><AbreviaData data={aula.data_hora_fim} /></td>
-                        <td>{aula.turma}</td>
-                        <td><AbreviaInstrutor nome={aula.instrutor} /></td>
-                        <td><AbreviaUC nome={aula.unidade_curricular} /></td>
-                        <td><AbreviaAmbiente ambiente={aula.ambiente} /></td>
-                        {tipo === 'edit' && 
-                        <td>
-                            <button className="btn btn-warning">Editar</button>
-                            <button className="btn btn-danger ms-2">Deletar</button>
-                        </td>
-                         }
+        <div className={`${styles.aulas} ${tipo === 'edit' ? styles.edit : ''}`}>
+            <table className={styles.tabelaAulas}>
+                <thead>
+                    <tr>
+                        <th>Início</th>
+                        <th>Fim</th>
+                        <th>Turma</th>
+                        <th>Instrutor</th>
+                        <th>Unidade Curricular</th>
+                        <th>Ambiente</th>
+                        {tipo === 'edit' && <th>Ações</th>}
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {aulas.map((aula) => (
+                        <tr key={aula.id}>
+                            <td><AbreviaData data={aula.data_hora_inicio} /></td>
+                            <td><AbreviaData data={aula.data_hora_fim} /></td>
+                            <td>{aula.turma}</td>
+                            <td><AbreviaInstrutor nome={aula.instrutor} /></td>
+                            <td><AbreviaUC nome={aula.unidade_curricular} /></td>
+                            <td><AbreviaAmbiente ambiente={aula.ambiente} /></td>
+                            {tipo === 'edit' &&
+                                <td>
+                                    <Link to={`/edit_aula/${aula.id}`} className="btn btn-warning">Editar</Link>
+                                    <button 
+                                    className="btn btn-danger ms-2"
+                                    onClick={()=>deletarAulas(aula.id)}
+                                    >Deletar</button>
+                                </td>
+                            }
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 }
