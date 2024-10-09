@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
 import Navbar from '../layout/Navbar';
+import { useNavigate } from 'react-router-dom';
 
 
-function FormAula({ titulo, textoBotao, handleSubmit, id }) {
+function FormAula({ titulo, textoBotao, handleSubmit, id, tipo }) {
+    const navigate = useNavigate();
+
     const [dataAula, setDataAula] = useState('');
     const [horaInicio, setHoraInicio] = useState('');
     const [horaFim, setHoraFim] = useState('');
@@ -50,7 +53,8 @@ function FormAula({ titulo, textoBotao, handleSubmit, id }) {
             ambiente: ambiente,
             chave: null
         }
-        handleSubmit(aula);
+        handleSubmit(aula, id);
+        navigate(`/gestao_aulas/${tipo}`);
     }
 
     return (
