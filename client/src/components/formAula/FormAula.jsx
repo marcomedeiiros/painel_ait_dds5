@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../layout/Navbar';
 
 
 function FormAula({ titulo, textoBotao, handleSubmit, id }) {
+    const navegar = useNavigate();
+
     const [dataAula, setDataAula] = useState('');
     const [horaInicio, setHoraInicio] = useState('');
     const [horaFim, setHoraFim] = useState('');
@@ -41,16 +44,17 @@ function FormAula({ titulo, textoBotao, handleSubmit, id }) {
         e.preventDefault();
 
         const aula = {
-            data: dataAula,
-            data_hora_inicio: horaInicio,
-            data_hora_fim: horaFim,
+            date: dataAula,
+            horaInicio: `${dataAula} ${horaInicio}`,
+            horaFim: `${dataAula} ${horaFim}`,
             turma: turma,
             instrutor: instrutor,
-            unidade_curricular: unidadeCurricular,
+            uniCurricular: unidadeCurricular,
             ambiente: ambiente,
             chave: null
         }
-        handleSubmit(aula);
+        handleSubmit(aula,id);
+        navegar(`/gestao_aulas`);
     }
 
     return (

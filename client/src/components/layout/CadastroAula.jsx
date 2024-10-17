@@ -4,8 +4,7 @@ import FormAula from '../formAula/FormAula';
 
 function CadastroAula() {
 
-    async function cadastrarAula(infoAula) {
-        try {
+    async function cadastrarAula(infoAula) {console.log(infoAula);        try {
             const resposta = await fetch('http://localhost:5000/aulas', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

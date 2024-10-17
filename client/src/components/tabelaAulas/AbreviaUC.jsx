@@ -1,5 +1,6 @@
 function AbreviaUC(props) {
     const { nome } = props;
+    return nome;    
     const nomes = nome.split(' ');
 
     if (nomes.length < 3) {

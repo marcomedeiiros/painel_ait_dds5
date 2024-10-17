@@ -12,8 +12,9 @@ import { mostrarAulas,criarAula } from './controllers/AulaController.js';
 const app = express();
 const porta = 5000;
 
-
 app.use(cors());
+
+app.use(express.json());
 
 app.get('/',(req,res)=>{
     res.send('Teste de API funcionando')
