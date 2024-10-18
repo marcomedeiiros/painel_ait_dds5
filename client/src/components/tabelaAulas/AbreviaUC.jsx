@@ -1,16 +1,17 @@
+
 function AbreviaUC(props) {
-    const { nome } = props;
-    return nome;    
-    const nomes = nome.split(' ');
+    const unidSplit = props.data.split(' ');
+    let unidUm = unidSplit.splice(0,1);
+    unidUm = String(unidUm);
 
-    if (nomes.length < 3) {
-        return <span>{nome}</span>;
-    }
-
-    const primeiroNome = nomes[0];
-    const antepenultimoNome = nomes[nomes.length - 3];
-
-    return <span>{primeiroNome} {antepenultimoNome}</span>;
+    let unidUmForm = unidUm.substring(0,4) + '. ';
+    
+    let array = unidSplit.splice(0,3);
+    if (array[0] === 'DE') {
+        return unidUmForm+array[0]+' '+array[1];
+    } else {
+        return unidUmForm+array[0];
+    };
 }
 
-export default AbreviaUC;
+export default AbreviaUC
