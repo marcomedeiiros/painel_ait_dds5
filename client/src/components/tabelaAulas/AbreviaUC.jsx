@@ -1,6 +1,7 @@
 
-function AbreviaUC(props) {
-    const unidSplit = props.data.split(' ');
+function AbreviaUC({uc}) {
+    return uc;
+    const unidSplit = uc.split(' ');
     let unidUm = unidSplit.splice(0,1);
     unidUm = String(unidUm);
 
@@ -14,4 +15,4 @@ function AbreviaUC(props) {
     };
 }
 
-export default AbreviaUC
+export default AbreviaUC;

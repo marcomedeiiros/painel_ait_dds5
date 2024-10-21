@@ -104,3 +104,24 @@ export async function deleteAula(id) {
     }
 
 }
+
+export async function showOneAula(id) {
+    const conexao = mysql.createPool(db);
+
+    console.log('mostrando uma aula model aula');
+
+    const sql = `SELECT * FROM aulas WHERE idpainel = ?`;
+
+    const params = [id];
+
+    try {
+        const [rows] = await conexao.query(sql, params);
+        console.log('mostrando aula');
+        return [200, rows];
+    } catch (error) {
+        console.log(error);
+        return [500, error];
+    }
+
+}
+

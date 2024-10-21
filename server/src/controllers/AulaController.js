@@ -1,4 +1,4 @@
-import { aymar, createAula, deleteAula, updateAula } from "../models/AulaModel.js";
+import { aymar, createAula, deleteAula, updateAula, showOneAula } from "../models/AulaModel.js";
 
 export async function criarAula(req,res) {
     console.log('AulaController criarAula');
@@ -53,6 +53,21 @@ export async function excluirAula(req,res) {
     } catch (error) {
         console.log(error);
         res.status(500).json(error);                
+    }
+    
+}
+
+export async function mostrarUmaAulas(req,res) {
+    console.log('AulaController mostrarUmAula');
+
+    const { id } = req.params;
+
+    try {
+        const [status, resposta] = await showOneAula(id);
+        res.status(status).json(resposta);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json(error);
     }
     
 }

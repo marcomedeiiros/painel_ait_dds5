@@ -67,19 +67,19 @@ function TabelaAulas({ tipo }) {
                 </thead>
                 <tbody>
                     {aulas.map((aula) => (
-                        <tr key={aula.id}>
-                            <td><AbreviaData data={aula.data_hora_inicio} /></td>
-                            <td><AbreviaData data={aula.data_hora_fim} /></td>
+                        <tr key={aula.idpainel}>
+                            <td><AbreviaData data={aula.horaInicio} /></td>
+                            <td><AbreviaData data={aula.horaFim} /></td>
                             <td>{aula.turma}</td>
                             <td><AbreviaInstrutor nome={aula.instrutor} /></td>
-                            <td><AbreviaUC nome={aula.unidade_curricular} /></td>
+                            <td><AbreviaUC uc={aula.unidade_curricular} /></td>
                             <td><AbreviaAmbiente ambiente={aula.ambiente} /></td>
                             {tipo === 'edit' &&
                                 <td>
-                                    <Link to={`/edit_aula/${aula.id}`} className="btn btn-warning">Editar</Link>
-                                    <button 
-                                    className="btn btn-danger ms-2"
-                                    onClick={()=>deletarAulas(aula.id)}
+                                    <Link to={`/edit_aula/${aula.idpainel}`} className="btn btn-warning">Editar</Link>
+                                    <button
+                                        className="btn btn-danger ms-2"
+                                        onClick={() => deletarAulas(aula.idpainel)}
                                     >Deletar</button>
                                 </td>
                             }
