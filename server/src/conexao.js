@@ -3,7 +3,7 @@ const db = {
     host:'localhost',
     user:'root',
     password:'',
-    database:'mydb'
+    database:'painel'
 } 
 
 export default db;

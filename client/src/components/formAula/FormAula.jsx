@@ -35,7 +35,7 @@ function FormAula({ titulo, textoBotao,handleSubmit,id,tipo}) {
                 console.log(respostaJSON);
                 setTurma(respostaJSON.turma);
                 setInstrutor(respostaJSON.instrutor);
-                setUnidadeCurricular(respostaJSON.unidade_curricular);
+                setUnidadeCurricular(respostaJSON.uniCurricular);
                 setAmbiente(respostaJSON.ambiente);
             }
         } catch (error) {
