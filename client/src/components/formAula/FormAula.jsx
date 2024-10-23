@@ -30,13 +30,18 @@ function FormAula({ titulo, textoBotao,handleSubmit,id,tipo}) {
 
             if (!resposta.ok) {
                 throw new Error('Erro ao buscar aula');
-            }else{
+            }else {
                 const respostaJSON = await resposta.json();
-                console.log(respostaJSON);
-                setTurma(respostaJSON.turma);
-                setInstrutor(respostaJSON.instrutor);
-                setUnidadeCurricular(respostaJSON.uniCurricular);
-                setAmbiente(respostaJSON.ambiente);
+                setAula({
+                    date: aula.date,
+                    horaInicio: aula.horaInicio,
+                    horaFim: aula.horaFim,
+                    turma: respostaJSON.turma,
+                    instrutor: respostaJSON.instrutor,
+                    uniCurricular: respostaJSON.uniCurricular,
+                    ambiente: respostaJSON.ambiente,
+                    chave: null,
+                })
             }
         } catch (error) {
             console.log(error)
